@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="styles.css">
         <title>Weather</title>
     </head>
-    <body>
+    <body class="blurred">
         <header class="header">
             <div class="header-left">
                 <img class="weather-icon large" src="icons/sun.svg" data-current-icon />
@@ -119,8 +119,53 @@
             </tbody>
         </table>
 
-        <template></template>
+        <template id="day-card-template">
+            <div class="day-card">
+                <img  class="weather-icon" data-icon/>
+                <div class="day-card-day" data-date></div>
+                <div><span data-temp></span><span>&deg;</span></div>
+            </div>
+        </template>
+
+        <template id="hour-row-template">
+            <tr class="hour-row">
+                <td>
+                    <div class="info-group">
+                        <div class="label" data-day></div>
+                        <div data-time></div>
+                    </div>
+                </td>
+                <td>
+                    <img class="weather-icon" data-icon/>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">TEMP</div>
+                        <div><span data-temp>31</span><span>&deg;</span></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">FL TEMP</div>
+                        <div><span data-fl-temp></span><span>&deg;</span></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">WIND</div>
+                        <div><span data-wind></span><span>mph</span></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">PRECIP</div>
+                        <div><span data-precip>0.03</span><span>in</span></div>
+                    </div>
+                </td>
+
+            </tr>
+        </template>
     </body>
-    <script href="main.js"></script>
+    <script type="module" src="main.js"></script>
 
 </html>
