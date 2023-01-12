@@ -1,7 +1,10 @@
 import { getWeather } from "./weather.js";
 import { ICON_MAP } from "./iconMap.js"
-console.log('hello main')
-getWeather(10,10, Intl.DateTimeFormat().resolvedOptions().timeZone)
+
+navigator.geolocation.getCurrentPosition(positionSuccess, positionError) 
+
+function positionSuccess({ coords }) {
+    getWeather(coords.latitude, coords.longitude, Intl.DateTimeFormat().resolvedOptions().timeZone)
     .then( (data) => {
         console.log(data);
         renderWeather(data)
@@ -9,6 +12,14 @@ getWeather(10,10, Intl.DateTimeFormat().resolvedOptions().timeZone)
     .catch((error) => {
         console.error(error);
     });
+}
+
+function positionError() {
+    alert(
+        "could not get user location. Please allow the website to get the user location and refresh the page."
+    )
+}
+
 
 
 function renderWeather({current, daily, hourly}) {
@@ -31,10 +42,10 @@ function renderCurrentWeather(current) {
     document.querySelector('[data-current-icon]').src = `icons/${ICON_MAP.get(current.iconCode)}.svg`
 }
 
-
+const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long"})
 function renderDailyWeather(daily) {
 
-    const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long"})
+
     const dayCardTemplate = document.getElementById("day-card-template");
     document.querySelector('[data-day-section]').innerHTML = "";
 
@@ -51,9 +62,9 @@ function renderDailyWeather(daily) {
 
 
 
-
+const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, { hour: "numeric"});
 function renderHourlyWeather(hourlyWeather) {
-    const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long"});
+
 
     let hourTemplate = document.getElementById('hour-row-template');
     let hourSection = document.querySelector('[data-hour-section]');
@@ -67,6 +78,10 @@ function renderHourlyWeather(hourlyWeather) {
         element.querySelector('[data-fl-temp]').textContent = hour.feelsLike
         element.querySelector('[data-wind]').textContent = hour.windSpeed
         element.querySelector('[data-precip]').textContent = hour.precip
+        element.querySelector('[data-day]').textContent = DAY_FORMATTER.format(hour.timestamp)
+        element.querySelector('[data-time]').textContent = HOUR_FORMATTER.format(hour.timestamp)
+
+
 
         hourSection.append(element);
     })
