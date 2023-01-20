@@ -15,9 +15,9 @@ function positionSuccess({ coords }) {
 }
 
 function positionError() {
-    // alert(
-    //     "could not get user location. Please allow the website to get the user location and refresh the page."
-    // )
+    alert(
+        "could not get user location. Please allow the website to get the user location and refresh the page."
+    )
 }
 
 
