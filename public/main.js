@@ -1,12 +1,12 @@
 import { getWeather } from "./weather.js";
 import { ICON_MAP } from "./iconMap.js"
 
-navigator.geolocation.getCurrentPosition(positionSuccess, positionError) 
+navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
+
 
 function positionSuccess({ coords }) {
     getWeather(coords.latitude, coords.longitude, Intl.DateTimeFormat().resolvedOptions().timeZone)
     .then( (data) => {
-        console.log(data);
         renderWeather(data)
     })
     .catch((error) => {
@@ -15,9 +15,9 @@ function positionSuccess({ coords }) {
 }
 
 function positionError() {
-    alert(
-        "could not get user location. Please allow the website to get the user location and refresh the page."
-    )
+    // alert(
+    //     "could not get user location. Please allow the website to get the user location and refresh the page."
+    // )
 }
 
 

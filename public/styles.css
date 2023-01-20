@@ -13,6 +13,42 @@ body {
     filter: blur(3px);
     overflow: hidden;
 }
+
+.search-bar {
+    margin: 2rem;
+}
+
+.search-bar-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+
+
+#search {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+
+#search-card-container{
+    margin: 0px;
+}
+
+.search-card{
+    padding: .5rem;
+    background-color: hsl(0, 0%, 80%);
+}
+
+.search-card:nth-child(2n) {
+    background-color: hsl(0, 0%, 75%);
+}
+
+.search-card:hover {
+    border: solid 1px black;
+}
+
 .header {
     display: flex;
     align-items: center;

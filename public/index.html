@@ -4,7 +4,16 @@
         <link rel="stylesheet" href="styles.css">
         <title>Weather</title>
     </head>
-    <body class="blurred">
+    <body>
+        <header class="search-bar">
+            <div class="search-bar-input-container">
+                <label for="search">Search Location</label>
+                <input type="search" id="search">
+            </div>
+            <div id="search-card-container">
+
+            </div>
+        </header>
         <header class="header">
             <div class="header-left">
                 <img class="weather-icon large" src="icons/sun.svg" data-current-icon />
@@ -165,7 +174,15 @@
 
             </tr>
         </template>
+
+
+        <template id="search-card-template">
+            <div class="search-card" search-result>
+
+            </div>
+        </template>
     </body>
     <script type="module" src="main.js"></script>
+    <script src="search.js"></script>
 
 </html>
