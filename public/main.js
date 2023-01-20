@@ -22,7 +22,7 @@ function positionError() {
 
 
 
-function renderWeather({current, daily, hourly}) {
+export function renderWeather({current, daily, hourly}) {
     renderCurrentWeather(current);
     renderDailyWeather(daily);
     renderHourlyWeather(hourly);
@@ -86,6 +86,4 @@ function renderHourlyWeather(hourlyWeather) {
         hourSection.append(element);
     })
 }
-
-
 
